@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>All in One Shopping</title>
+
   <style>
     :root{
       --bg:#0b1220;
@@ -20,9 +21,10 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(110,168,254,.18), transparent),
-                  radial-gradient(900px 500px at 80% 20%, rgba(101,251,210,.12), transparent),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(110,168,254,.18), transparent),
+        radial-gradient(900px 500px at 80% 20%, rgba(101,251,210,.12), transparent),
+        var(--bg);
       color: var(--text);
     }
     a{color:inherit; text-decoration:none}
@@ -85,6 +87,7 @@
       color: var(--muted);
       font-weight:700;
       font-size:13px;
+      white-space: nowrap;
     }
     .hero{
       display:grid; gap:16px;
@@ -158,14 +161,30 @@
       padding:14px;
       display:flex; flex-direction:column; gap:10px;
     }
+
+    /* IMAGE THUMBNAIL */
     .thumb{
-      height:90px; border-radius: 14px;
+      height: 150px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      display:block;
+    }
+    /* fallback box (when no image) */
+    .thumbFallback{
+      height: 150px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
       background: linear-gradient(135deg, rgba(110,168,254,.35), rgba(101,251,210,.25));
-      border:1px solid rgba(255,255,255,.08);
       display:flex; align-items:center; justify-content:center;
       font-weight:900; color: rgba(232,238,255,.9);
       letter-spacing:.4px;
+      text-align:center;
+      padding: 10px;
     }
+
     .meta{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
     .meta b{display:block}
     .meta small{display:block; color: var(--muted); font-weight:650; margin-top:2px}
@@ -263,8 +282,8 @@
       <div class="heroCard">
         <h1>Shop smarter, faster.</h1>
         <p>
-          This is a simple demo storefront. Filter by category, search products, and add items to your cart.
-          You can later connect it to a real backend or payment gateway.
+          Filter by category, search products, and add items to your cart.
+          You can later connect this to a real backend or payment gateway.
         </p>
 
         <div class="heroStats">
@@ -277,8 +296,8 @@
             <span>Categories</span>
           </div>
           <div class="stat">
-            <b>Secure UI</b>
-            <span>Front-end demo</span>
+            <b>Image Support</b>
+            <span>Local images folder</span>
           </div>
           <div class="stat">
             <b>Responsive</b>
@@ -290,8 +309,8 @@
       <div class="heroCard sideCard">
         <h3>Quick tips</h3>
         <ul>
-          <li>Use the category buttons to filter.</li>
-          <li>Search works across name + category.</li>
+          <li>Upload product photos into <b>images</b> folder.</li>
+          <li>File names must match the code exactly.</li>
           <li>Checkout is a demo (no real payment).</li>
         </ul>
       </div>
@@ -331,26 +350,33 @@
   </main>
 
   <script>
+    // IMPORTANT:
+    // 1) Create folder named: images
+    // 2) Upload images with these exact filenames (you can change names if you also change paths below)
+
     const productsSeed = [
-      { id:"p1", name:"Wireless Earbuds", category:"Electronics", price:24.99 },
-      { id:"p2", name:"Smartphone Case", category:"Electronics", price:9.99 },
-      { id:"p3", name:"Bluetooth Speaker", category:"Electronics", price:34.50 },
-      { id:"p4", name:"Running Shoes", category:"Fashion", price:49.99 },
-      { id:"p5", name:"Casual T-Shirt", category:"Fashion", price:14.25 },
-      { id:"p6", name:"Backpack", category:"Fashion", price:29.00 },
-      { id:"p7", name:"Basmati Rice (5kg)", category:"Grocery", price:12.75 },
-      { id:"p8", name:"Olive Oil (1L)", category:"Grocery", price:8.60 },
-      { id:"p9", name:"Green Tea", category:"Grocery", price:4.99 },
-      { id:"p10", name:"Shampoo", category:"Beauty", price:6.40 },
-      { id:"p11", name:"Face Moisturizer", category:"Beauty", price:11.90 },
-      { id:"p12", name:"Hand Sanitizer", category:"Beauty", price:2.99 }
+      { id:"p1",  name:"Wireless Earbuds",    category:"Electronics", price:24.99, image:"images/earbuds.jpg" },
+      { id:"p2",  name:"Smartphone Case",     category:"Electronics", price:9.99,  image:"images/phone-case.jpg" },
+      { id:"p3",  name:"Bluetooth Speaker",   category:"Electronics", price:34.50, image:"images/speaker.jpg" },
+
+      { id:"p4",  name:"Running Shoes",       category:"Fashion",     price:49.99, image:"images/shoes.jpg" },
+      { id:"p5",  name:"Casual T-Shirt",      category:"Fashion",     price:14.25, image:"images/tshirt.jpg" },
+      { id:"p6",  name:"Backpack",           category:"Fashion",     price:29.00, image:"images/backpack.jpg" },
+
+      { id:"p7",  name:"Basmati Rice (5kg)",  category:"Grocery",     price:12.75, image:"images/rice.jpg" },
+      { id:"p8",  name:"Olive Oil (1L)",      category:"Grocery",     price:8.60,  image:"images/olive-oil.jpg" },
+      { id:"p9",  name:"Green Tea",           category:"Grocery",     price:4.99,  image:"images/tea.jpg" },
+
+      { id:"p10", name:"Shampoo",             category:"Beauty",      price:6.40,  image:"images/shampoo.jpg" },
+      { id:"p11", name:"Face Moisturizer",    category:"Beauty",      price:11.90, image:"images/moisturizer.jpg" },
+      { id:"p12", name:"Hand Sanitizer",      category:"Beauty",      price:2.99,  image:"images/sanitizer.jpg" }
     ];
 
     const state = {
       products: productsSeed,
       query: "",
       category: "All",
-      cart: new Map() // id -> qty
+      cart: new Map()
     };
 
     const fmt = new Intl.NumberFormat("en-GB", { style:"currency", currency:"GBP" });
@@ -430,7 +456,32 @@
         els.cats.appendChild(btn);
       });
 
-      els.statCategories.textContent = String(cats.length - 1); // excluding "All"
+      els.statCategories.textContent = String(cats.length - 1);
+      els.statProducts.textContent = String(state.products.length);
+    }
+
+    function createThumb(p) {
+      // If image exists, show it. If not, show a nice fallback.
+      const img = document.createElement("img");
+      img.className = "thumb";
+      img.src = p.image || "";
+      img.alt = p.name;
+
+      img.onerror = () => {
+        const fallback = document.createElement("div");
+        fallback.className = "thumbFallback";
+        fallback.textContent = (p.category || "PRODUCT").toUpperCase();
+        img.replaceWith(fallback);
+      };
+
+      // If no image path provided, instantly fallback
+      if (!p.image) {
+        const fallback = document.createElement("div");
+        fallback.className = "thumbFallback";
+        fallback.textContent = (p.category || "PRODUCT").toUpperCase();
+        return fallback;
+      }
+      return img;
     }
 
     function renderProducts() {
@@ -441,9 +492,7 @@
         const card = document.createElement("div");
         card.className = "card";
 
-        const thumb = document.createElement("div");
-        thumb.className = "thumb";
-        thumb.textContent = p.category.toUpperCase();
+        const thumb = createThumb(p);
 
         const meta = document.createElement("div");
         meta.className = "meta";
@@ -457,6 +506,7 @@
 
         const row = document.createElement("div");
         row.className = "row";
+
         const left = document.createElement("span");
         left.className = "tag";
         left.textContent = "In stock";
@@ -476,8 +526,6 @@
 
         els.products.appendChild(card);
       });
-
-      els.statProducts.textContent = String(state.products.length);
     }
 
     function renderCart() {
@@ -508,7 +556,10 @@
             <button class="miniBtn" type="button" aria-label="Increase">+</button>
           `;
 
-          const [decBtn, , incBtn] = right.querySelectorAll("button, b");
+          const buttons = right.querySelectorAll("button");
+          const decBtn = buttons[0];
+          const incBtn = buttons[1];
+
           decBtn.onclick = () => changeQty(id, -1);
           incBtn.onclick = () => changeQty(id, +1);
 
@@ -582,7 +633,6 @@
       els.year.textContent = String(new Date().getFullYear());
     }
 
-    // Init
     wireUp();
     renderCats();
     renderProducts();
