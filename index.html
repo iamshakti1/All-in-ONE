@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;All in One Shopping&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg:#0b1220;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--card:#101a33;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--muted:#9fb0d0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text:#e8eeff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent:#6ea8fe;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent2:#65fbd2;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border: rgba(255,255,255,.10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--shadow: 0 10px 30px rgba(0,0,0,.35);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>*{box-sizing:border-box}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(1200px 600px at 20% 0%, rgba(110,168,254,.18), transparent),</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>radial-gradient(900px 500px at 80% 20%, rgba(101,251,210,.12), transparent),</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a{color:inherit; text-decoration:none}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.container{max-width:1100px; margin:0 auto; padding:18px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>header{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: sticky; top:0; z-index:10;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(11,18,32,.65);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:14px; align-items:center; justify-content:space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:14px 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; align-items:center; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:800; letter-spacing:.2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.logo{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:38px; height:38px; border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, var(--accent), var(--accent2));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand small{display:block; color:var(--muted); font-weight:600; margin-top:1px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.searchRow{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:10px; align-items:center; flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 520px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.input{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.06);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>outline:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.input:focus{border-color: rgba(110,168,254,.55)}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, rgba(110,168,254,.95), rgba(101,251,210,.95));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:none; color:#071022;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:800;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn.secondary{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.06);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow:none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:8px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:13px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; gap:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 1.35fr .65fr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.heroCard{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero h1{margin:0 0 6px 0; font-size: 28px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero p{margin:0; color: var(--muted); line-height:1.5}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.heroStats{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 1fr 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.05);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat b{display:block; font-size:16px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat span{color: var(--muted); font-weight:650; font-size:13px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sideCard h3{margin:0 0 10px 0; font-size:16px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sideCard ul{margin:0; padding-left: 18px; color: var(--muted); line-height:1.6}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; gap:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 1.6fr .9fr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items:start;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.panel{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.05);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.panel h2{margin:0 0 12px 0; font-size:18px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cats{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:10px; flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.catBtn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:9px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.04);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:750;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:13px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.catBtn.active{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(110,168,254,.7);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 0 3px rgba(110,168,254,.12);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.products{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; gap:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(3, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.04);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; flex-direction:column; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.thumb{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height:90px; border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, rgba(110,168,254,.35), rgba(101,251,210,.25));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(255,255,255,.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; align-items:center; justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:900; color: rgba(232,238,255,.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing:.4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.meta{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.meta b{display:block}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.meta small{display:block; color: var(--muted); font-weight:650; margin-top:2px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.price{font-weight:900}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.row{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:10px; align-items:center; justify-content:space-between</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.qty{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:8px; align-items:center</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.miniBtn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:34px; height:34px; border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.06);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tag{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:6px 10px; border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cartItems{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; flex-direction:column; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cartLine{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; gap:10px; justify-content:space-between; align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.04);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cartLine b{display:block}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cartLine small{color: var(--muted); font-weight:650}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cartTotal{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; justify-content:space-between; align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkout{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.checkout .input{padding:11px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.foot{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 22px 0 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:650;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 980px){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.hero{grid-template-columns: 1fr}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.grid{grid-template-columns: 1fr}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.products{grid-template-columns: repeat(2, 1fr)}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.searchRow{max-width: unset}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 520px){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.topbar{flex-wrap:wrap}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.products{grid-template-columns: 1fr}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="brand"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="logo" aria-hidden="true"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>All in One Shopping</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;small&gt;One page. Many categories.&lt;/small&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="searchRow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="search" class="input" placeholder="Search products (e.g., shoes, phone, rice)..." /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button id="clearBtn" class="btn secondary" type="button"&gt;Clear&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="pill" id="cartCount"&gt;Cart: 0&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="heroCard"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Shop smarter, faster.&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>This is a simple demo storefront. Filter by category, search products, and add items to your cart.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>You can later connect it to a real backend or payment gateway.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="heroStats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b id="statProducts"&gt;0&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Products&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b id="statCategories"&gt;0&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Categories&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b&gt;Secure UI&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Front-end demo&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stat"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b&gt;Responsive&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Mobile friendly&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="heroCard sideCard"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Quick tips&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Use the category buttons to filter.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Search works across name + category.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Checkout is a demo (no real payment).&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Categories&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cats" id="cats"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 style="margin-top:14px;"&gt;Products&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="products" id="products"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;aside class="panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Your Cart&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cartItems" id="cartItems"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cartTotal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span&gt;Total&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="total"&gt;£0.00&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="checkout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input class="input" id="name" placeholder="Full name" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input class="input" id="email" placeholder="Email" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input class="input" id="address" placeholder="Address" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn" id="checkoutBtn" type="button"&gt;Checkout (Demo)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;small style="color:var(--muted); font-weight:650;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>This demo will show an order summary. No payment is taken.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/small&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/aside&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="foot"&gt;© &lt;span id="year"&gt;&lt;/span&gt; All in One Shopping&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const productsSeed = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p1", name:"Wireless Earbuds", category:"Electronics", price:24.99 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p2", name:"Smartphone Case", category:"Electronics", price:9.99 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p3", name:"Bluetooth Speaker", category:"Electronics", price:34.50 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p4", name:"Running Shoes", category:"Fashion", price:49.99 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p5", name:"Casual T-Shirt", category:"Fashion", price:14.25 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p6", name:"Backpack", category:"Fashion", price:29.00 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p7", name:"Basmati Rice (5kg)", category:"Grocery", price:12.75 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p8", name:"Olive Oil (1L)", category:"Grocery", price:8.60 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p9", name:"Green Tea", category:"Grocery", price:4.99 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p10", name:"Shampoo", category:"Beauty", price:6.40 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p11", name:"Face Moisturizer", category:"Beauty", price:11.90 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id:"p12", name:"Hand Sanitizer", category:"Beauty", price:2.99 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const state = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>products: productsSeed,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>query: "",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>category: "All",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cart: new Map() // id -&gt; qty</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const fmt = new Intl.NumberFormat("en-GB", { style:"currency", currency:"GBP" });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const els = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cats: document.getElementById("cats"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>products: document.getElementById("products"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>search: document.getElementById("search"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clearBtn: document.getElementById("clearBtn"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cartItems: document.getElementById("cartItems"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>total: document.getElementById("total"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cartCount: document.getElementById("cartCount"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>checkoutBtn: document.getElementById("checkoutBtn"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>name: document.getElementById("name"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>email: document.getElementById("email"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>address: document.getElementById("address"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statProducts: document.getElementById("statProducts"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statCategories: document.getElementById("statCategories"),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>year: document.getElementById("year"),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getCategories() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return ["All", ...Array.from(new Set(state.products.map(p =&gt; p.category)))];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function filteredProducts() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const q = state.query.trim().toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return state.products.filter(p =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const matchCat = state.category === "All" || p.category === state.category;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const matchQ = !q || (p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return matchCat &amp;&amp; matchQ;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function cartQtyTotal() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let sum = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const qty of state.cart.values()) sum += qty;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return sum;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function cartTotal() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let total = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const [id, qty] of state.cart.entries()) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const p = state.products.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (p) total += p.price * qty;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return total;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setCategory(cat) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.category = cat;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderCats();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderProducts();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addToCart(id) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cart.set(id, (state.cart.get(id) || 0) + 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderCart();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function changeQty(id, delta) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const next = (state.cart.get(id) || 0) + delta;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (next &lt;= 0) state.cart.delete(id);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>else state.cart.set(id, next);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderCart();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderCats() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const cats = getCategories();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.cats.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cats.forEach(cat =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement("button");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.type = "button";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.className = "catBtn" + (cat === state.category ? " active" : "");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = cat;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.onclick = () =&gt; setCategory(cat);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>els.cats.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.statCategories.textContent = String(cats.length - 1); // excluding "All"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderProducts() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const items = filteredProducts();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.products.innerHTML = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>items.forEach(p =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const card = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.className = "card";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const thumb = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>thumb.className = "thumb";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>thumb.textContent = p.category.toUpperCase();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const meta = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>meta.className = "meta";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>meta.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b&gt;${escapeHtml(p.name)}&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;small&gt;${escapeHtml(p.category)}&lt;/small&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="price"&gt;${fmt.format(p.price)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const row = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>row.className = "row";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const left = document.createElement("span");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left.className = "tag";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left.textContent = "In stock";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement("button");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.type = "button";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.className = "btn secondary";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = "Add to cart";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.onclick = () =&gt; addToCart(p.id);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>row.appendChild(left);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>row.appendChild(btn);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.appendChild(thumb);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.appendChild(meta);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.appendChild(row);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>els.products.appendChild(card);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.statProducts.textContent = String(state.products.length);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderCart() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.cartItems.innerHTML = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (state.cart.size === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const empty = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>empty.style.color = "var(--muted)";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>empty.style.fontWeight = "650";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>empty.textContent = "Your cart is empty. Add a few items 🙂";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>els.cartItems.appendChild(empty);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (const [id, qty] of state.cart.entries()) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const p = state.products.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!p) continue;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>const line = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>line.className = "cartLine";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>const left = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>left.innerHTML = `&lt;b&gt;${escapeHtml(p.name)}&lt;/b&gt;&lt;small&gt;${escapeHtml(p.category)} • ${fmt.format(p.price)}&lt;/small&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>const right = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>right.className = "qty";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>right.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="miniBtn" type="button" aria-label="Decrease"&gt;−&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b&gt;${qty}&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="miniBtn" type="button" aria-label="Increase"&gt;+&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>const [decBtn, , incBtn] = right.querySelectorAll("button, b");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>decBtn.onclick = () =&gt; changeQty(id, -1);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>incBtn.onclick = () =&gt; changeQty(id, +1);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>line.appendChild(left);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>line.appendChild(right);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>els.cartItems.appendChild(line);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.total.textContent = fmt.format(cartTotal());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.cartCount.textContent = `Cart: ${cartQtyTotal()}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function escapeHtml(str){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return String(str)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replaceAll("&amp;","&amp;amp;")</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replaceAll("&lt;","&amp;lt;")</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replaceAll("&gt;","&amp;gt;")</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replaceAll('"',"&amp;quot;")</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replaceAll("'","&amp;#039;");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function checkout() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (state.cart.size === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("Your cart is empty.");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const name = els.name.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const email = els.email.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const address = els.address.value.trim();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!name || !email || !address) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("Please fill in name, email, and address.");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const lines = [];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const [id, qty] of state.cart.entries()) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const p = state.products.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (p) lines.push(`${p.name} x${qty} = ${fmt.format(p.price * qty)}`);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>alert(</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"Order placed (demo)!\n\n" +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`Name: ${name}\nEmail: ${email}\nAddress: ${address}\n\n` +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"Items:\n" + lines.join("\n") + "\n\n" +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"Total: " + fmt.format(cartTotal())</p>
+<p class="p1"><span class="Apple-converted-space">      </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>state.cart.clear();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderCart();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.name.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.email.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.address.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function wireUp() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.search.addEventListener("input", (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state.query = e.target.value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderProducts();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.clearBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>state.query = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>els.search.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setCategory("All");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderProducts();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.checkoutBtn.onclick = checkout;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>els.year.textContent = String(new Date().getFullYear());</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Init</p>
+<p class="p1"><span class="Apple-converted-space">    </span>wireUp();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderCats();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderProducts();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderCart();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
