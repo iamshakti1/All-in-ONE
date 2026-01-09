@@ -8,7 +8,6 @@
   <style>
     :root{
       --bg:#0b1220;
-      --card:#101a33;
       --muted:#9fb0d0;
       --text:#e8eeff;
       --accent:#6ea8fe;
@@ -29,6 +28,7 @@
     }
     a{color:inherit; text-decoration:none}
     .container{max-width:1100px; margin:0 auto; padding:18px}
+
     header{
       position: sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
@@ -39,16 +39,27 @@
       display:flex; gap:14px; align-items:center; justify-content:space-between;
       padding:14px 0;
     }
+
     .brand{
       display:flex; align-items:center; gap:10px;
       font-weight:800; letter-spacing:.2px;
+      min-width: 240px;
     }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+
+    /* LOGO IMAGE */
+    .logo-img{
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 6px;
       box-shadow: var(--shadow);
     }
+
     .brand small{display:block; color:var(--muted); font-weight:600; margin-top:1px}
+
     .searchRow{
       display:flex; gap:10px; align-items:center; flex: 1;
       max-width: 520px;
@@ -89,6 +100,7 @@
       font-size:13px;
       white-space: nowrap;
     }
+
     .hero{
       display:grid; gap:16px;
       grid-template-columns: 1.35fr .65fr;
@@ -103,6 +115,7 @@
     }
     .hero h1{margin:0 0 6px 0; font-size: 28px}
     .hero p{margin:0; color: var(--muted); line-height:1.5}
+
     .heroStats{
       display:grid; gap:10px;
       grid-template-columns: 1fr 1fr;
@@ -116,8 +129,10 @@
     }
     .stat b{display:block; font-size:16px}
     .stat span{color: var(--muted); font-weight:650; font-size:13px}
+
     .sideCard h3{margin:0 0 10px 0; font-size:16px}
     .sideCard ul{margin:0; padding-left: 18px; color: var(--muted); line-height:1.6}
+
     .grid{
       display:grid; gap:16px;
       grid-template-columns: 1.6fr .9fr;
@@ -132,6 +147,7 @@
       box-shadow: var(--shadow);
     }
     .panel h2{margin:0 0 12px 0; font-size:18px}
+
     .cats{
       display:flex; gap:10px; flex-wrap:wrap;
       margin-bottom: 12px;
@@ -150,6 +166,7 @@
       border-color: rgba(110,168,254,.7);
       box-shadow: 0 0 0 3px rgba(110,168,254,.12);
     }
+
     .products{
       display:grid; gap:12px;
       grid-template-columns: repeat(3, 1fr);
@@ -162,7 +179,6 @@
       display:flex; flex-direction:column; gap:10px;
     }
 
-    /* IMAGE THUMBNAIL */
     .thumb{
       height: 150px;
       width: 100%;
@@ -172,7 +188,6 @@
       background: rgba(255,255,255,.04);
       display:block;
     }
-    /* fallback box (when no image) */
     .thumbFallback{
       height: 150px;
       border-radius: 14px;
@@ -189,19 +204,9 @@
     .meta b{display:block}
     .meta small{display:block; color: var(--muted); font-weight:650; margin-top:2px}
     .price{font-weight:900}
+
     .row{
       display:flex; gap:10px; align-items:center; justify-content:space-between
-    }
-    .qty{
-      display:flex; gap:8px; align-items:center
-    }
-    .miniBtn{
-      width:34px; height:34px; border-radius: 12px;
-      background: rgba(255,255,255,.06);
-      border:1px solid var(--border);
-      color: var(--text);
-      cursor:pointer;
-      font-weight:900;
     }
     .tag{
       display:inline-block;
@@ -211,6 +216,7 @@
       font-weight:700;
       font-size:12px;
     }
+
     .cartItems{
       display:flex; flex-direction:column; gap:10px;
       margin-top: 10px;
@@ -224,6 +230,19 @@
     }
     .cartLine b{display:block}
     .cartLine small{color: var(--muted); font-weight:650}
+
+    .qty{
+      display:flex; gap:8px; align-items:center
+    }
+    .miniBtn{
+      width:34px; height:34px; border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color: var(--text);
+      cursor:pointer;
+      font-weight:900;
+    }
+
     .cartTotal{
       margin-top: 12px;
       display:flex; justify-content:space-between; align-items:center;
@@ -231,22 +250,26 @@
       border-top: 1px solid var(--border);
       font-weight:900;
     }
+
     .checkout{
       margin-top: 12px;
       display:grid; gap:10px;
     }
     .checkout .input{padding:11px}
+
     .foot{
       margin: 22px 0 8px;
       color: var(--muted);
       font-weight:650;
       text-align:center;
     }
+
     @media (max-width: 980px){
       .hero{grid-template-columns: 1fr}
       .grid{grid-template-columns: 1fr}
       .products{grid-template-columns: repeat(2, 1fr)}
       .searchRow{max-width: unset}
+      .brand{min-width: unset}
     }
     @media (max-width: 520px){
       .topbar{flex-wrap:wrap}
@@ -260,13 +283,14 @@
     <div class="container">
       <div class="topbar">
         <div class="brand">
-  <img src="images/logo.png" alt="All in One Shopping Logo" class="logo-img" />
-  <div>
-    All in One Shopping
-    <small>One page. Many categories.</small>
-  </div>
-</div>
-
+          <!-- Upload your logo here: images/logo.png -->
+          <img src="images/logo.png" alt="All in One Shopping Logo" class="logo-img"
+               onerror="this.style.display='none';" />
+          <div>
+            All in One Shopping
+            <small>One page. Many categories.</small>
+          </div>
+        </div>
 
         <div class="searchRow">
           <input id="search" class="input" placeholder="Search products (e.g., shoes, phone, rice)..." />
@@ -297,8 +321,8 @@
             <span>Categories</span>
           </div>
           <div class="stat">
-            <b>Image Support</b>
-            <span>Local images folder</span>
+            <b>Logo Added</b>
+            <span>Header branding</span>
           </div>
           <div class="stat">
             <b>Responsive</b>
@@ -310,8 +334,8 @@
       <div class="heroCard sideCard">
         <h3>Quick tips</h3>
         <ul>
-          <li>Upload product photos into <b>images</b> folder.</li>
-          <li>File names must match the code exactly.</li>
+          <li>Upload your logo as <b>images/logo.png</b>.</li>
+          <li>Upload product photos in <b>images</b> folder.</li>
           <li>Checkout is a demo (no real payment).</li>
         </ul>
       </div>
@@ -351,10 +375,7 @@
   </main>
 
   <script>
-    // IMPORTANT:
-    // 1) Create folder named: images
-    // 2) Upload images with these exact filenames (you can change names if you also change paths below)
-
+    // Upload images into /images folder with these names (you can change them)
     const productsSeed = [
       { id:"p1",  name:"Wireless Earbuds",    category:"Electronics", price:24.99, image:"images/earbuds.jpg" },
       { id:"p2",  name:"Smartphone Case",     category:"Electronics", price:9.99,  image:"images/phone-case.jpg" },
@@ -462,7 +483,6 @@
     }
 
     function createThumb(p) {
-      // If image exists, show it. If not, show a nice fallback.
       const img = document.createElement("img");
       img.className = "thumb";
       img.src = p.image || "";
@@ -475,13 +495,13 @@
         img.replaceWith(fallback);
       };
 
-      // If no image path provided, instantly fallback
       if (!p.image) {
         const fallback = document.createElement("div");
         fallback.className = "thumbFallback";
         fallback.textContent = (p.category || "PRODUCT").toUpperCase();
         return fallback;
       }
+
       return img;
     }
 
